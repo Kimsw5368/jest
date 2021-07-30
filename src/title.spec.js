@@ -6,25 +6,14 @@ describe('Workspace Basic', () => {
   });
 
     it('', async () => {
-      await lib.closeModal()
+      await lib.goSignUp()
       await page.waitForTimeout(1000)
     })
 
     it('', async () => {
-      await lib.moveLoan()
+      await lib.nmPersonInput()
       await page.waitForTimeout(1000)
     })
-
-    it('', async () => {
-      await lib.compareSteps()
-      await page.waitForTimeout(1000)
-    })
-
-    it('', async () => {        
-      await lib.agreeClick()
-      await page.waitForTimeout(3000);
-    })
-
   // it('should be moved to the chat/todo page', async () => {
   //   await lib.moveTopMenu('Check');
   //   await page.waitForTimeout(500);

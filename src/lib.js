@@ -3,8 +3,7 @@ const headless = global.env.headless;
 
 module.exports = {
   async start() {
-
-    await page.goto(`https://finset.io`);
+    await page.goto(`http://dev.finset.io/intro`);
     await page.setViewport({ width: 1100, height: 690 });
   },
   async click(selector) {
@@ -18,6 +17,18 @@ module.exports = {
   async closeModal() {
     const selector = '.c-modal-wrap > .c-main-modal > .c-modal-img_main > #button-wrapper-mydata > button:nth-child(1)'
     await this.click(selector)
+  },
+  async goSignUp() {
+    await page.waitForTimeout(1000)
+    const selector = '.v-application--wrap > .service-intro > #content > .btn-container-wrap > .btn-sm-rm'
+    await this.click(selector)
+  },
+  async nmPersonInput() {
+    await page.waitForTimeout(1000)
+    const selector = '#nmPerson'
+    await page.$eval(selector, el => el.value = '김성욱')
+    await page.waitForTimeout(1000)
+    await page.keyboard.press('Enter');
   },
   async moveLoan() {
     const selector = '.row > .col-md-6 > .textW > .c-btn > a'
