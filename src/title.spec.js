@@ -5,15 +5,25 @@ describe('Workspace Basic', () => {
    await lib.start();
   });
 
-    it('', async () => {
+    it('should be moved to the member/chert page', async () => {
       await lib.goSignUp()
       await page.waitForTimeout(1000)
     })
 
-    it('', async () => {
+    it('should be name entered in the inputBox', async () => {
       await lib.nmPersonInput()
       await page.waitForTimeout(1000)
     })
+
+    it('should be ssnBirth entered in the inputBox', async () => {
+      await lib.ssnBirthInput()
+      await page.waitForTimeout(1000)
+    })
+
+    // it('', async () => {
+    //   await lib.telecomCompanySelect()
+    //   await page.waitForTimeout(1000)
+    // })
   // it('should be moved to the chat/todo page', async () => {
   //   await lib.moveTopMenu('Check');
   //   await page.waitForTimeout(500);

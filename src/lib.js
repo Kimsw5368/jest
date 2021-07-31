@@ -1,6 +1,3 @@
-const gitpleUrl = global.env.target;
-const headless = global.env.headless;
-
 module.exports = {
   async start() {
     await page.goto(`http://dev.finset.io/intro`);
@@ -26,10 +23,28 @@ module.exports = {
   async nmPersonInput() {
     await page.waitForTimeout(1000)
     const selector = '#nmPerson'
+    const buttonSelector = '#app > .v-application--wrap > main > #content > .btn-wrap'
     await page.$eval(selector, el => el.value = '김성욱')
-    await page.waitForTimeout(1000)
-    await page.keyboard.press('Enter');
+    await this.click(buttonSelector)
+    await page.waitForSelector(1000)
   },
+  async ssnBirthInput() {
+    this.nmPersonInput()
+    await page.waitForTimeout(1000)
+    const selector = '#ssnBirth'
+    const nextSelector = '#sex'
+    await page.$eval(selector, el => el.value = '000525')
+    await page.waitForTimeout(500)
+    await page.$eval(nextSelector, el => el.value = '3')
+  },
+  // async telecomCompanySelect() {
+  //   await page.waitForTimeout(1000)
+  //   const selector = '#telecomCompany'
+  //   const listSelector = '.c-select__layer > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(2)'
+  //   await this.click(selector)
+  //   await page.waitForTimeout(500)
+  //   await this.click(listSelector)
+  // },
   async moveLoan() {
     const selector = '.row > .col-md-6 > .textW > .c-btn > a'
     await page.evaluate( () => {
