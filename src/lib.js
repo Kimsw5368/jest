@@ -16,24 +16,20 @@ module.exports = {
     await this.click(selector)
   },
   async nmPersonInput() {
-    const selector = '#nmPerson'
     const btnSelector = '#app > .v-application--wrap > main > #content > .btn-wrap'
-    const elementHandle = await page.$(selector)
+    const elementHandle = await page.$('#nmPerson')
     await elementHandle.type('김성욱')
     await this.click(btnSelector)
   },
   async ssnBirthInput() {
-    const selector = '#ssnBirth'
-    const nextSelector = '#sex'
-    const ssnBirthHandle = await page.$(selector)
-    const nextHandle = await page.$(nextSelector)
+    const ssnBirthHandle = await page.$('#ssnBirth')
+    const nextHandle = await page.$('#sex')
     await ssnBirthHandle.type('000525')
     await nextHandle.type('3')
   },
   async telecomCompanySelect() {
     const selector = '.c-select__layer > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(2)'
-    const hpSelector = '#hp'
-    const hpHandle = await page.$(hpSelector)
+    const hpHandle = await page.$('#hp')
     await this.click(selector)
     await hpHandle.type('01012345678')
   },
@@ -45,7 +41,7 @@ module.exports = {
     const selector = '.modal-bg > .modal-body > .agree-row > .header > label'
     await this.click(selector)
   },
-  async goertification() {
+  async goCertification() {
     const btnSelector = '#content > #form-container-v0 > .modal-bg > .modal-body > .next-btn'
     await this.click(btnSelector)
   },
@@ -81,6 +77,74 @@ module.exports = {
     await this.click(selector3)
     await this.click(selector3)
 
+  },
+
+  async goMain() {
+    const selector1 = 'main > section > .certcode-wrap > .number > a:nth-child(1)'
+    const selector2 = 'main > section > .certcode-wrap > .number > a:nth-child(2)'
+    const selector3 = 'main > section > .certcode-wrap > .number > a:nth-child(3)'
+
+    await page.goto(`http://dev.finset.io/home?hp=01026882453`)
+    await this.click(selector1)
+    await this.click(selector1)
+
+    await this.click(selector2)
+    await this.click(selector2)
+
+    await this.click(selector3)
+    await this.click(selector3)
+  },
+
+  async goLoanCompare() {
+    const selector = '.container-v0 > div > .loan-btn > .beforeIng > .v-btn__content'
+    this.click(selector)
+  },
+
+  async goGoodsSms() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    this.click(selector)
+  },
+
+  async smsInput() {
+    const smsHandle = await page.$('.space-float > .container-v0 > .form-row > .sms-certification > input')
+    await smsHandle.type('123456')
+  },
+
+  async goGoodsSsn() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
+  async ssnInput() {
+    const ssnHandle = await page.$('.space-float > .container-v0 > .form-ssn > .back-wrap > input')
+    await ssnHandle.type('1234567')
+  },
+
+  async goJobChoice() {
+    const selector = 'main > .space-float > .container-v0 > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
+  async backButton() {
+    const selector = '.v-application--wrap > main > .header-wrapper > #header > .btn-back'
+    await this.click(selector)
+  },
+
+  async goodsNextButton() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
+    await page.waitForTimeout(500)
+    await this.backButton()
+  },
+
+  async salarymanClick() {
+    await this.goodsNextButton()
+  },
+
+  async officialClick() {
+    const selector = 'main > .space-float > .container-v0 > .form-boxradio:nth-child(3) > label'
+    await this.click(selector)
+    await this.goodsNextButton()
   },
 
   async getText(element) {
