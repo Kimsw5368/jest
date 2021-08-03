@@ -130,21 +130,60 @@ module.exports = {
     await this.click(selector)
   },
 
-  async goodsNextButton() {
+  async goodsButton() {
     const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
     await this.click(selector)
     await page.waitForTimeout(500)
     await this.backButton()
   },
 
+  async nextButton() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
   async salarymanClick() {
-    await this.goodsNextButton()
+    await this.goodsButton()
   },
 
   async officialClick() {
     const selector = 'main > .space-float > .container-v0 > .form-boxradio:nth-child(3) > label'
     await this.click(selector)
-    await this.goodsNextButton()
+    await this.goodsButton()
+  },
+
+  async personalBusinessClick() {
+    const selector = 'main > .space-float > .container-v0 > .form-boxradio:nth-child(4) > label'
+    await this.click(selector)
+    await this.goodsButton()
+  },
+
+  async freelencerClick() {
+    const selector = 'main > .space-float > .container-v0 > .form-boxradio:nth-child(5) > label'
+    await this.click(selector)
+    await this.goodsButton()
+  },
+
+  async houseWifeClick() {
+    const selector = 'main > .space-float > .container-v0 > .form-boxradio:nth-child(6) > label'
+    await this.click(selector)
+    await this.goodsButton()
+  },
+
+  async nameCompanyInput() {
+    const selector = '#nameCompany'
+    await this.click(selector)
+  },
+
+  async jobNameInput() {
+    const nameHandle = await page.$('#job-name-input')
+    await nameHandle.type('한국금융솔루션')
+    await page.waitForTimeout(3000)
+  },
+
+  async creditJobSearch() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
   },
 
   async getText(element) {

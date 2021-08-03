@@ -88,8 +88,45 @@ describe('Workspace Basic', () => {
     it('should be moved to the goods/job page and return goods/joobChoice page', async() => {
       await lib.salarymanClick()
       await page.waitForTimeout(1000)
+    })
+
+    it('should be moved to the goods/job page and return goods/joobChoice page', async() => {
       await lib.officialClick()
       await page.waitForTimeout(1000)
     })
 
+    it('should be moved to the goods/job page and return goods/joobChoice page', async() => {
+      await lib.personalBusinessClick()
+      await page.waitForTimeout(1000)
+    })
+
+    it('should be moved to the goods/job page and return goods/joobChoice page', async() => {
+      await lib.freelencerClick()
+      await page.waitForTimeout(1000)
+    })
+
+    it('should be moved to the goods/job page and return goods/joobChoice page', async() => {
+      await lib.houseWifeClick()
+      await page.waitForTimeout(1000)
+    })
+
+    it('should be moved to the goods/job page', async() => {
+      await lib.nextButton()
+      await page.waitForTimeout(1000)
+    })
+
+    it('should be moved to the goods/creditSrcJobNm page', async() => {
+      await lib.nameCompanyInput()
+      await page.waitForTimeout(1000)
+    })
+
+    it('should be jobNameInput entered in the inputBox', async() => {
+      await lib.jobNameInput()
+      await page.waitForTimeout(1000)
+    })
+
+    it('should be looked to the company list', async() => {
+      await lib.creditJobSearch()
+      await page.waitForTimeout(1000)
+    })
 })
