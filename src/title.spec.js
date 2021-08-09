@@ -18,7 +18,7 @@ describe('Workspace Basic', () => {
 
     it('should be ssnBirth entered in the inputBox', async () => {
       await lib.ssnBirthInput()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(1000)
     })
 
     it('should be hp entered in the inputBox', async () => {
@@ -33,7 +33,7 @@ describe('Workspace Basic', () => {
 
     it('should be checked to the checkbox', async () => {
       await lib.agreementAllSelect()
-      await page.waitForTimeout(1000)
+      await page.waitForTimeout(500)
     })
 
     it('should be moved to the member/certSms page', async () => {
@@ -48,22 +48,22 @@ describe('Workspace Basic', () => {
 
     it('should be looked to the success message', async () => {
       await lib.goPasswordSetting()
-      await page.waitForTimeout(1000)
+      await page.waitForTimeout(500)
     })
 
     it('should be moved to the main page', async() => {
       await lib.goMain()
-      await page.waitForTimeout(1000)
+      await page.waitForTimeout(1500)
     })
 
     it('should be moved to the goods/compare page', async() => {
       await lib.goGoodsCompare()
-      await page.waitForTimeout(1000)
+      await page.waitForTimeout(500)
     })
 
     it('should be moved to the goods/cert page', async() => {
       await lib.goGoodsCert()
-      await page.waitForTimeout(1000)
+      await page.waitForTimeout(500)
     })
 
     it('should be moved to the goods/sms page', async() => {

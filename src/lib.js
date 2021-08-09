@@ -73,7 +73,6 @@ module.exports = {
 
   async goGoodsCompare() {
     const selector = '.space-bottomtab > .container-v0 > div > .loan-btn > .beforeIng'
-    page.waitForTimeout(1000)
     await this.click(selector)
   },
 
@@ -127,7 +126,7 @@ module.exports = {
   async goodsButton() {
     const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
     await this.click(selector)
-    await page.waitForTimeout(500)
+    await page.waitForTimeout(1000)
     await this.backButton()
   },
 
