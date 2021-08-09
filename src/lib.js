@@ -1,6 +1,6 @@
 module.exports = {
   async start() {
-    await page.goto(`http://dev.finset.io/intro`)
+    await page.goto(`http://m.finset.io/intro`)
     await page.setViewport({ width: 1200, height: 1000 })
   },
   async click(selector) {
@@ -18,20 +18,20 @@ module.exports = {
   async nmPersonInput() {
     const btnSelector = '#app > .v-application--wrap > main > #content > .btn-wrap'
     const elementHandle = await page.$('#nmPerson')
-    await elementHandle.type('김성욱')
+    await elementHandle.type('박준수')
     await this.click(btnSelector)
   },
   async ssnBirthInput() {
     const ssnBirthHandle = await page.$('#ssnBirth')
     const nextHandle = await page.$('#sex')
-    await ssnBirthHandle.type('000525')
-    await nextHandle.type('3')
+    await ssnBirthHandle.type('841029')
+    await nextHandle.type('1')
   },
   async telecomCompanySelect() {
-    const selector = '.c-select__layer > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(2)'
+    const selector = '.c-select__layer > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(1)'
     const hpHandle = await page.$('#hp')
     await this.click(selector)
-    await hpHandle.type('01012345678')
+    await hpHandle.type('01026882453')
   },
   async goAgreement() {
     const selector = '.v-application--wrap > main > #content > .btn-wrap > .v-btn'
@@ -47,13 +47,16 @@ module.exports = {
   },
 
   async certificationInput() {
-    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
     const sertificationHandle = await page.$('.space-float > .container-v0 > .form-row > .sms-certification > input')
-    await sertificationHandle.type('12345678')
+    await sertificationHandle.type('900000')
+  },
+
+  async goPasswordSetting() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
     await this.click(selector)
   },
 
-  async passwordSetting() {
+  async goMain() {
     const selector1 = 'main > section > .certcode-wrap > .number > a:nth-child(1)'
     const selector2 = 'main > section > .certcode-wrap > .number > a:nth-child(2)'
     const selector3 = 'main > section > .certcode-wrap > .number > a:nth-child(3)'
@@ -66,67 +69,39 @@ module.exports = {
 
     await this.click(selector3)
     await this.click(selector3)
-
-    await this.click(selector1)
-    await this.click(selector1)
-    await this.click(selector1)
-
-    await this.click(selector2)
-    await this.click(selector2)
-
-    await this.click(selector3)
-    await this.click(selector3)
-
-  },
-
-  async goMain() {
-    const selector1 = 'main > section > .certcode-wrap > .number > a:nth-child(1)'
-    const selector2 = 'main > section > .certcode-wrap > .number > a:nth-child(2)'
-    const selector3 = 'main > section > .certcode-wrap > .number > a:nth-child(3)'
-
-    await page.goto(`http://dev.finset.io/home?hp=01026882453`)
-    await this.click(selector1)
-    await this.click(selector1)
-
-    await this.click(selector2)
-    await this.click(selector2)
-
-    await this.click(selector3)
-    await this.click(selector3)
   },
 
   async goGoodsCompare() {
     const selector = '.space-bottomtab > .container-v0 > div > .loan-btn > .beforeIng'
+    page.waitForTimeout(1000)
     await this.click(selector)
   },
 
   async goGoodsCert() {
     const selector = '.space-float-sm > .container-v0 > .topintro > .btn-wrap > .v-btn'
-    await this.click(selector) 
-  },
-
-  async goGoodsSms() {
-    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
-    const goodsResultBtn = 'main > .bg-gray > .space-float > .goods-search-result-none > a'
+    const goodsNoResultBtn = 'main > .bg-gray > .space-float > .goods-search-result-none > a'
     const goodsSearchBtn = '.bg-gray > .space-float > .btn-container-wrap > .v-btn > .v-btn__content'
     const compare = await page.$(selector)
-    const search = await page.$(goodsResultBtn)
+    const search = await page.$(goodsNoResultBtn)
     if (compare === null && search === null) {
       await this.click(goodsSearchBtn)
-      await this.click(selector)
     }
     if (compare === null) {
-      await this.click(goodsResultBtn)
-      await this.click(selector)
+      await this.click(goodsNoResultBtn)
     } 
      else {
       await this.click(selector)
     }
   },
 
+  async goGoodsSms() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
   async smsInput() {
     const smsHandle = await page.$('.space-float > .container-v0 > .form-row > .sms-certification > input')
-    await smsHandle.type('123456')
+    await smsHandle.type('900000')
   },
 
   async goGoodsSsn() {
@@ -136,7 +111,7 @@ module.exports = {
 
   async ssnInput() {
     const ssnHandle = await page.$('.space-float > .container-v0 > .form-ssn > .back-wrap > input')
-    await ssnHandle.type('1234567')
+    await ssnHandle.type('9000000')
   },
 
   async goJobChoice() {
@@ -296,6 +271,21 @@ module.exports = {
     await page.waitForTimeout(100)
     await this.click('.container-v0 > .form-row:nth-child(4) > .form-tabradio-wrap > .form-tabradio:nth-child(5) > label')
     await page.waitForTimeout(100)
+    await this.click(selector)
+  },
+
+  async checkGoodsCar() {
+    const selector = '.container-v0 > .form-row > .form-tabradio-wrap > .form-tabradio:nth-child(1) > label'
+    await this.click(selector)
+  },
+
+  async carSelect() {
+    const selector = '#cars'
+    await this.click(selector)
+  },
+
+  async carSelectModal() {
+    const selector = '.c-select__layer > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(1)'
     await this.click(selector)
   },
 

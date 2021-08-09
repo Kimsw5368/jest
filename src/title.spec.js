@@ -33,7 +33,7 @@ describe('Workspace Basic', () => {
 
     it('should be checked to the checkbox', async () => {
       await lib.agreementAllSelect()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(1000)
     })
 
     it('should be moved to the member/certSms page', async () => {
@@ -47,7 +47,7 @@ describe('Workspace Basic', () => {
     })
 
     it('should be looked to the success message', async () => {
-      await lib.passwordSetting()
+      await lib.goPasswordSetting()
       await page.waitForTimeout(1000)
     })
 
@@ -58,27 +58,27 @@ describe('Workspace Basic', () => {
 
     it('should be moved to the goods/compare page', async() => {
       await lib.goGoodsCompare()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(1000)
     })
 
     it('should be moved to the goods/cert page', async() => {
       await lib.goGoodsCert()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(1000)
     })
 
     it('should be moved to the goods/sms page', async() => {
       await lib.goGoodsSms()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(1000)
     })
 
     it('should be CertificationNumber entered in the inputBox', async() => {
       await lib.smsInput()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(1000)
     })
 
     it('should be moved to the goods/sns page', async() => {
       await lib.goGoodsSsn()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(1000)
     })
 
     it('should be ssnNumber entered in the inputBox', async() => {
@@ -201,17 +201,32 @@ describe('Workspace Basic', () => {
       await page.waitForTimeout(500)
     })
 
+    it('should be clicked to the button', async() => {
+      await lib.checkGoodsCar()
+      await page.waitForTimeout(500)
+    })
+
+    it('should be moved to the checkCar modal', async() => {
+      await lib.carSelect()
+      await page.waitForTimeout(500)
+    })
+
+    it('should be checkCar entered in the inputBox', async() => {
+      await lib.carSelectModal()
+      await page.waitForTimeout(500)
+    })
+
     it('should be moved to the goods/certUse page', async() => {
       await lib.goCertUse()
       await page.waitForTimeout(500)
     })
 
-    it('', async() => {
+    it('should be checked to the checkBox', async() => {
       await lib.checkBoxClick()
       await page.waitForTimeout(500)
     })
 
-    it('', async() => {
+    it('should be moved to the goods/searchResult', async() => {
       await lib.goCompare()
       await page.waitForTimeout(25000)
     })
