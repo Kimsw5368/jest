@@ -95,14 +95,33 @@ module.exports = {
     await this.click(selector3)
   },
 
-  async goLoanCompare() {
-    const selector = '.container-v0 > div > .loan-btn > .beforeIng > .v-btn__content'
-    this.click(selector)
+  async goGoodsCompare() {
+    const selector = '.space-bottomtab > .container-v0 > div > .loan-btn > .beforeIng'
+    await this.click(selector)
+  },
+
+  async goGoodsCert() {
+    const selector = '.space-float-sm > .container-v0 > .topintro > .btn-wrap > .v-btn'
+    await this.click(selector) 
   },
 
   async goGoodsSms() {
     const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
-    this.click(selector)
+    const goodsResultBtn = 'main > .bg-gray > .space-float > .goods-search-result-none > a'
+    const goodsSearchBtn = '.bg-gray > .space-float > .btn-container-wrap > .v-btn > .v-btn__content'
+    const compare = await page.$(selector)
+    const search = await page.$(goodsResultBtn)
+    if (compare === null && search === null) {
+      await this.click(goodsSearchBtn)
+      await this.click(selector)
+    }
+    if (compare === null) {
+      await this.click(goodsResultBtn)
+      await this.click(selector)
+    } 
+     else {
+      await this.click(selector)
+    }
   },
 
   async smsInput() {
@@ -175,14 +194,123 @@ module.exports = {
     await this.click(selector)
   },
 
-  async jobNameInput() {
-    const nameHandle = await page.$('#job-name-input')
-    await nameHandle.type('한국금융솔루션')
-    await page.waitForTimeout(3000)
+  async goCreditInsJobNm() {
+    const selector = 'main > .space-float > .container > .link-arrow-wrap > .link-arrow-tiny'
+    await this.click(selector)
   },
 
-  async creditJobSearch() {
+  async jobNameInput() {
+    const comapnyHandle = await page.$('#company')
+    const bizCompHandle = await page.$('#bizComp')
+    await comapnyHandle.type('(주)한국금융솔루션')
+    await bizCompHandle.type('5368601346')
+  },
+
+  async returnGoodsJob() {
+    const selector = 'main > .space-float > .container > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
+  async employmentType() {
+    const selector = '#employeeType'
+    await this.click(selector)
+  },
+
+  async modalEmploymentType() {
+    const selector = '.c-select__layer > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(1)'
+    await this.click(selector)
+  },
+
+  async dateJoin() {
+    const selector = '#dateJoin'
+    await this.click(selector)
+  },
+
+  async salaryInput() {
+    const salaryHandle = await page.$('#yearIncome')
+    await salaryHandle.type('5000')
+  },
+
+  async goJobDetail() {
     const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
+  async clikcDate() {
+    const selector = '.date-select > .date-select__layer > .date-select__options > .btn-container-wrap > .btn-sm-rm'
+    await this.click(selector)
+  },
+
+  async occupationalInput() {
+    const selector = '#occupational'
+    await this.click(selector)
+  }, 
+
+  async occupationalOption() {
+    const selector = '.c-select__layer--on > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(1)'
+    await this.click(selector)
+  },
+
+  async workerPositionInput() {
+    const selector = '#cdWorkerPosition'
+    await this.click(selector)
+  },
+
+  async workerPositionOption() {
+    const selector = '.c-select__layer--on > .c-select__modal > .c-select__options > .c-select__category > .c-select__item:nth-child(5)'
+    await this.click(selector)
+  },
+
+  async goGoodsEtc() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
+  async goodsEtcBtn() {
+    const selector = 'main > .space-float > .container-v0 > .btn-wrap > .v-btn'
+    await this.click('.container-v0 > .form-row:nth-child(2) > .form-tabradio-wrap > .form-tabradio:nth-child(2) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(2) > .form-tabradio-wrap > .form-tabradio:nth-child(3) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(2) > .form-tabradio-wrap > .form-tabradio:nth-child(4) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(2) > .form-tabradio-wrap > .form-tabradio:nth-child(5) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(2) > .form-tabradio-wrap > .form-tabradio:nth-child(6) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(3) > .form-tabradio-wrap > .form-tabradio:nth-child(2) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(3) > .form-tabradio-wrap > .form-tabradio:nth-child(3) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(3) > .form-tabradio-wrap > .form-tabradio:nth-child(4) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(3) > .form-tabradio-wrap > .form-tabradio:nth-child(5) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(3) > .form-tabradio-wrap > .form-tabradio:nth-child(6) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(4) > .form-tabradio-wrap > .form-tabradio:nth-child(2) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(4) > .form-tabradio-wrap > .form-tabradio:nth-child(3) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(4) > .form-tabradio-wrap > .form-tabradio:nth-child(4) > label')
+    await page.waitForTimeout(100)
+    await this.click('.container-v0 > .form-row:nth-child(4) > .form-tabradio-wrap > .form-tabradio:nth-child(5) > label')
+    await page.waitForTimeout(100)
+    await this.click(selector)
+  },
+
+  async goCertUse() {
+    const selector = '.v-application--wrap > main > .space-float > .btn-wrap > .v-btn'
+    await this.click(selector)
+  },
+
+  async checkBoxClick() {
+    const selector = '.container-v0 > div > .agree-row > .header > label'
+    await this.click(selector)
+  },
+
+  async goCompare() {
+    const selector = 'main > .space-float > .container-v0 > .btn-wrap > .v-btn'
     await this.click(selector)
   },
 
@@ -190,11 +318,11 @@ module.exports = {
     if (typeof element === 'string') {
       element = await page.waitForSelector(element)
     }
-
     const property = await element.getProperty('textContent')
     const text = await property.jsonValue();
     return text;
   },
+
   async checkText(element, exepectText) {
     const text = await this.getText(element)
     await expect(text).toMatch(exepectText)
